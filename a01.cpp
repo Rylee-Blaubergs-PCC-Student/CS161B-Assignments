@@ -103,7 +103,7 @@ int main() {
 welcome();
 //diplay menu
 displayMenu();
-
+readOption();
 
 
 
@@ -136,4 +136,11 @@ int readInt(string prompt, int &num)
   }
   cin.ignore(10, '\n');
   return tempVar;
+}
+
+void readOption() {
+
+
+
+    
 }
