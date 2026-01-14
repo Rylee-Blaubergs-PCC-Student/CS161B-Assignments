@@ -16,9 +16,10 @@ using namespace std;
 // function prototypes
 void welcome();
 void displayMenu();
-void readOption(int &option); // name of order
-void placeOrder(double &cost); // cost of order
-int readInt(string prompt, int &num);
+void readOption(int &option); 
+
+void placeOrder(double &cost); 
+void readInt(string prompt, int &num);
 double readDouble(string prompt, double &num);
 void calcTotal();
 double tipDiscount(double &tip, double &discount, double cost);
@@ -42,7 +43,7 @@ int main() {
 welcome();
 //diplay menu
 displayMenu();
-option = readOption();
+readOption(option);
 
 do {
 
@@ -52,7 +53,7 @@ do {
 
 
 
-} while(option == 1)
+} while(option == 1);
 
 
 
@@ -69,16 +70,16 @@ void displayMenu() {
     cout << setw(10) << right << "2. Quit" << endl;
 }
 
-int readOption(int &option){
-userChoice = readInt(">>");
+void readOption(){
+int userChoice = readInt(">>", num);
 
-while (userChoice <= 0 && userChoice > 2) 
+while (userChoice < 1 && userChoice > 2) 
 cout << "Invalid input. try again."
 userChoice = readInt(">>");
 
 }
 
-int readInt(string prompt, int &num)
+void readInt(string prompt, int &num)
 {
   int tempVar = 0;
   cout << prompt;
@@ -92,11 +93,4 @@ int readInt(string prompt, int &num)
   }
   cin.ignore(10, '\n');
   return tempVar;
-}
-
-void readOption() {
-
-
-
-
 }
