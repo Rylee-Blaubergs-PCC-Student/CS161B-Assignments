@@ -103,9 +103,17 @@ int main() {
 welcome();
 //diplay menu
 displayMenu();
-readOption();
 
 
+do {
+
+
+
+
+
+
+
+} while(choice == 'y')
 
 
 
@@ -120,6 +128,12 @@ void displayMenu() {
     cout << "What would you like to do?" << endl;
     cout << setw(20) << right << "1. Place an order" << endl;
     cout << setw(10) << right << "2. Quit" << endl;
+}
+
+int readOption(int &option){
+
+
+
 }
 
 int readInt(string prompt, int &num)
@@ -142,5 +156,5 @@ void readOption() {
 
 
 
-    
+
 }
