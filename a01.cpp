@@ -1,7 +1,7 @@
 //******************************************************************************
 // Author:           Rylee Blaubergs
 // Assignment:       Assignment 1
-// Date:             
+// Date:             1/13/26
 // Description:      
 // Input:            
 // Output:           
@@ -9,6 +9,11 @@
 //                   
 //                   
 //******************************************************************************
+#include <iostream>
+using namespace std;
+
+// function prototypes
+void welcome();
 
 
 
