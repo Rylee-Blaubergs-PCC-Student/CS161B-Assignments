@@ -29,7 +29,7 @@ void goodbye();
 int main() {
 
     //input
-    int option = 0;
+    int userChoice = 0;
 
 
     //output
@@ -43,7 +43,7 @@ int main() {
 welcome();
 //diplay menu
 displayMenu();
-readOption(option);
+readOption(userChoice);
 
 do {
 
@@ -70,12 +70,13 @@ void displayMenu() {
     cout << setw(10) << right << "2. Quit" << endl;
 }
 
-void readOption(){
-int userChoice = readInt(">>", num);
+void readOption(int& option)
+{
+option    = readInt(">>", num);
 
-while (userChoice < 1 && userChoice > 2) 
+while (option < 1 && option > 2) 
 cout << "Invalid input. try again."
-userChoice = readInt(">>");
+option = readInt(">>");
 
 }
 
