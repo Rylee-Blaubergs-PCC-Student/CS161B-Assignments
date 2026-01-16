@@ -20,7 +20,7 @@ void readOption(int& option);
 
 void placeOrder(double &cost); 
 void readInt(string prompt, int &num);
-
+void readDouble(string prompt, double &num);
 
 int main() {
 
@@ -33,6 +33,9 @@ int main() {
 
 
     //anything inbetween
+    bool done = false;
+    
+    
     
 
 //welcome message
@@ -46,8 +49,11 @@ do {
 
 //did user want to quit?
 if (userChoice == 2) {
+done = true;
 break;
 }
+
+
 
 
 
@@ -57,7 +63,7 @@ break;
 readOption(userChoice);
 
 //do while condition (need to fix)
-} while(userChoice == 1);
+} while(!done);
 
 
 //end of main
@@ -82,7 +88,7 @@ void displayMenu() {
 void readOption(int &option) {
 bool valid;
 
-// start do while
+// start do while loop
 do {
 // read user input
 readInt(">>", option);
@@ -112,3 +118,19 @@ void readInt(string prompt, int &num) {
   }
   cin.ignore(10, '\n');
 }
+
+// start readDouble
+void readDouble(string prompt, double &num) {
+//Output prompt
+  cout << prompt;
+  cin >> num;
+  while(!cin)
+  {
+    cout << "Invalid input! Please try again!!" << endl;
+    cin.clear();
+    cin.ignore(100, '\n');
+    cin >> num;
+  }
+  cin.ignore(10, '\n');
+}
+
