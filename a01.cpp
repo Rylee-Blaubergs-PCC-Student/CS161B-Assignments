@@ -17,10 +17,12 @@ using namespace std;
 void welcome();
 void displayMenu();
 void readOption(int& option); 
-
 void placeOrder(double &cost); 
 void readInt(string prompt, int &num);
 void readDouble(string prompt, double &num);
+double tipDiscount(double &tip, double &discount, double cost)
+
+
 
 int main() {
 
@@ -54,13 +56,13 @@ break;
 }
 placeOrder(userCost);
 
-
-
-
-
+//Format to the second decimal place
+cout << fixed << setprecision(2);
 
 // ask if user wants to add more to their order
-cout << "Your total cost is " << userCost << endl << endl;
+cout << endl << "Your total cost is $" << userCost << endl << endl;
+
+
 displayMenu();
 readOption(userChoice);
 
@@ -106,17 +108,28 @@ cout << "Invalid input. try again." << endl;
 }
 
 // start placeOrder function
-void placeOrder(int &cost) {
+void placeOrder(double &cost) {
 char yesNo = 'y';
 bool yesNoTF = true; 
 string foodName = "";
+double foodCost = -1;
 
 while (yesNoTF) {
 cout << "Enter the name of your item: ";
 cin >> foodName;
-cout << "Enter the cost of youe item: ";
-cin >> cost;
-cost += cost;
+cout << "Enter the cost of youe item $: ";
+
+do {
+// gets food cost of current iteration
+readDouble("", foodCost);
+
+if (foodCost < 0) {
+    cout << "Invalid input. try again." << endl;   
+}
+} while (foodCost < 0);
+
+// update total cost
+cost += foodCost;
 cout << "Do you want to add another item? (y/n): ";
 cin >> yesNo;
 
@@ -129,6 +142,15 @@ yesNoTF = true;
   cin >> yesNo;
 }
 }
+}
+
+//start tipDiscount
+double tipDiscount(double &tip, double &discount, double cost) {
+
+
+
+
+
 }
 
 // start readInt
