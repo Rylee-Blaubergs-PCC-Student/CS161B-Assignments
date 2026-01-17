@@ -20,7 +20,7 @@ void readOption(int& option);
 void placeOrder(double &cost); 
 void readInt(string prompt, int &num);
 void readDouble(string prompt, double &num);
-double tipDiscount(double &tip, double &discount, double cost)
+double tipDiscount(double &tip, double &discount, double cost);
 
 
 
@@ -28,10 +28,10 @@ int main() {
 
     //input
     int userChoice = 0;
-    double userCost = 0;
-
+    double userCost = 0.0;
+    double tipAmount = 0.0;
     //output
-    
+    double discountAmount = 0.0;
 
 
     //anything inbetween
@@ -61,14 +61,14 @@ cout << fixed << setprecision(2);
 
 // ask if user wants to add more to their order
 cout << endl << "Your total cost is $" << userCost << endl << endl;
-
+tipDiscount(tipAmount, discountAmount, userCost);
 
 displayMenu();
 readOption(userChoice);
 
 //do while condition (need to fix)
 } while(!done);
-
+cout << "Thank you for using my program!" << endl;
 
 //end of main
 return 0;
@@ -117,7 +117,7 @@ double foodCost = -1;
 while (yesNoTF) {
 cout << "Enter the name of your item: ";
 cin >> foodName;
-cout << "Enter the cost of youe item $: ";
+cout << "Enter the cost of your item $: ";
 
 do {
 // gets food cost of current iteration
@@ -146,11 +146,31 @@ yesNoTF = true;
 
 //start tipDiscount
 double tipDiscount(double &tip, double &discount, double cost) {
+cout << "Enter the amount of tip you want to add $: ";
+// read tip amount
+readDouble("", tip);
+while(tip < 0) {
+cout << "Invalid input. Try again: ";
+readDouble("", tip);
+}
+cost += tip;
+cout << "Your total is: $" << cost << endl;
 
+// check for discounts
+if (cost > 50) {
+cout << "You get a 10% discount!" << endl;
+discount = cost * 0.10;
+cost -= discount;
+cout << "Your final cost is: $" << cost << endl;
 
+} else if (cost > 35 && cost < 50) {
+cout << "You get a 5% discount!" << endl;
+discount = cost * 0.05;
+cost -= discount;
+cout << "Your final cost is: $" << cost << endl;
+}
 
-
-
+return cost;
 }
 
 // start readInt
@@ -174,7 +194,7 @@ void readDouble(string prompt, double &num) {
   cout << prompt;
   cin >> num;
   while(!cin)
-  {
+  {  
     cout << "Invalid input! Please try again!!" << endl;
     cin.clear();
     cin.ignore(100, '\n');
