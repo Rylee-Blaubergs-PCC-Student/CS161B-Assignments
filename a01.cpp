@@ -5,12 +5,13 @@
 // Description:      Make a food cart shopping program
 // Input:            dish name as string, price amount as double, 
 // Output:           recipt of all items
-// Sources:          Assignment instructions and Sample Code
+// Sources:          Assignment instructions, Sample Code, previous term code(for the string validation) 
 //                   
 //                   
 //******************************************************************************
 #include <iostream>
 #include <iomanip>
+#include <string>
 using namespace std;
 
 // function prototypes
@@ -32,14 +33,7 @@ int main() {
     double tipAmount = 0.0;
     //output
     double discountAmount = 0.0;
-
-
-    //anything inbetween
-    bool done = false;
     
-    
-    
-
 //welcome message
 welcome();
 //diplay menu
@@ -47,13 +41,10 @@ displayMenu();
 readOption(userChoice);
 
 // start do while
-do {
+while(userChoice == 1) {
 
-//did user want to quit?
-if (userChoice == 2) {
-done = true;
-break;
-}
+userCost = 0.0;
+
 placeOrder(userCost);
 
 //Format to the second decimal place
@@ -66,14 +57,12 @@ tipDiscount(tipAmount, discountAmount, userCost);
 displayMenu();
 readOption(userChoice);
 
-//do while condition (need to fix)
-} while(!done);
-cout << "Thank you for using my program!" << endl;
+} 
+cout << endl << "Thank you for using my program!" << endl;
 
 //end of main
 return 0;
 }
-
 
 
 // start welcome message
@@ -90,33 +79,30 @@ void displayMenu() {
 
 //start readOption
 void readOption(int &option) {
-bool valid;
 
 // start do while loop
 do {
 // read user input
-readInt(">>", option);
+readInt(">> ", option);
 
 //check if option is one or two
-if (option == 1 || option == 2) {
- valid = true;   
-} else {    
+if (option < 1 || option > 2) {
 cout << "Invalid input. try again." << endl;
 }
 //loop while valid is false
-} while(!valid);
+} while(option != 1 && option != 2);
 }
 
 // start placeOrder function
 void placeOrder(double &cost) {
 char yesNo = 'y';
-bool yesNoTF = true; 
 string foodName = "";
 double foodCost = -1;
 
-while (yesNoTF) {
+while (yesNo == 'y' || yesNo == 'Y') {
+
 cout << "Enter the name of your item: ";
-cin >> foodName;
+getline(cin, foodName);
 cout << "Enter the cost of your item $: ";
 
 do {
@@ -133,14 +119,12 @@ cost += foodCost;
 cout << "Do you want to add another item? (y/n): ";
 cin >> yesNo;
 
-if (yesNo == 'n' || yesNo == 'N') {
- yesNoTF = false;   
-} else if (yesNo == 'y' || yesNo == 'Y') {
-yesNoTF = true;
-} else {
-  cout << "Invalid input. Try again: ";
-  cin >> yesNo;
+while (yesNo !=  'y' && yesNo != 'n' && yesNo !=  'Y' && yesNo != 'N') {
+cout << "Invalid Option! Please choose y/n!" << endl;
+cout << ">> ";
+cin >> yesNo;
 }
+cin.ignore();
 }
 }
 
@@ -154,20 +138,22 @@ cout << "Invalid input. Try again: ";
 readDouble("", tip);
 }
 cost += tip;
-cout << "Your total is: $" << cost << endl;
+cout << endl << "Your total is: $" << cost << endl;
 
 // check for discounts
 if (cost > 50) {
 cout << "You get a 10% discount!" << endl;
 discount = cost * 0.10;
 cost -= discount;
-cout << "Your final cost is: $" << cost << endl;
+cout << "Your discount is $" << discount << endl;
+cout << "Your final cost is: $" << cost << endl << endl;
 
 } else if (cost > 35 && cost < 50) {
 cout << "You get a 5% discount!" << endl;
 discount = cost * 0.05;
 cost -= discount;
-cout << "Your final cost is: $" << cost << endl;
+cout << "Your discount is $" << discount << endl;
+cout << "Your final cost is: $" << cost << endl << endl;
 }
 
 return cost;
