@@ -26,10 +26,10 @@ int main() {
 
     //input
     int userChoice = 0;
-
+    double userCost = 0;
 
     //output
-
+    
 
 
     //anything inbetween
@@ -52,7 +52,7 @@ if (userChoice == 2) {
 done = true;
 break;
 }
-
+placeOrder(userCost);
 
 
 
@@ -60,6 +60,8 @@ break;
 
 
 // ask if user wants to add more to their order
+cout << "Your total cost is " << userCost << endl << endl;
+displayMenu();
 readOption(userChoice);
 
 //do while condition (need to fix)
@@ -103,6 +105,31 @@ cout << "Invalid input. try again." << endl;
 } while(!valid);
 }
 
+// start placeOrder function
+void placeOrder(int &cost) {
+char yesNo = 'y';
+bool yesNoTF = true; 
+string foodName = "";
+
+while (yesNoTF) {
+cout << "Enter the name of your item: ";
+cin >> foodName;
+cout << "Enter the cost of youe item: ";
+cin >> cost;
+cost += cost;
+cout << "Do you want to add another item? (y/n): ";
+cin >> yesNo;
+
+if (yesNo == 'n' || yesNo == 'N') {
+ yesNoTF = false;   
+} else if (yesNo == 'y' || yesNo == 'Y') {
+yesNoTF = true;
+} else {
+  cout << "Invalid input. Try again: ";
+  cin >> yesNo;
+}
+}
+}
 
 // start readInt
 void readInt(string prompt, int &num) {
