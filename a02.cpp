@@ -1,11 +1,12 @@
 //******************************************************************************
 // Author:           Rylee Blaubergs
-// Assignment:       Assignment 1
-// Date:             1/13/26
-// Description:      Make a food cart shopping program
-// Input:            dish name as string, price amount as double, 
-// Output:           recipt of all items
-// Sources:          Assignment instructions, Sample Code, previous term code(for the string validation) 
+// Assignment:       Assignment 2
+// Date:             1/24/26
+// Description:      Makes an encoded file name for the user
+// Input:            users last and first name, if the assignment was late or not, 
+//                   student ID, file name, time of submission in military time
+// Output:           The encoded file name based on previous user input
+// Sources:          Assignment instructions and Sample Code
 //                   
 //                   
 //******************************************************************************
@@ -14,7 +15,15 @@
 #include <string>
 using namespace std;
 
-// function prototypes
 
+
+
+int main() {
+
+
+
+
+return 0;
+}
 
 
