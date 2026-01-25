@@ -13,6 +13,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+#include <cctype>
 using namespace std;
 
 void welcome();
@@ -21,6 +22,7 @@ void readOption(char &option);
 void encode(char encodeFileName[]);
 void readInput(char fName[], char lName[], bool &lateFlag);
 void readInput(char parsedID[], char fileName[]);
+void makeLower(char fName[], char lName[]);
 
 
 int main() {
@@ -34,6 +36,17 @@ welcome();
 displayMenu();
 
 readOption(choice);
+while (choice == 'e' || choice == 'E') {
+cout << "This program will ask you a few questions and generate an encoded" << endl
+     << "fileName based on your answers." << endl << endl;
+
+encode(encodeFileName);
+
+
+//check if user wants to make another file name
+displayMenu();
+readOption(choice);
+}
 
 
 return 0;
@@ -70,22 +83,39 @@ cin.ignore();
 
 void encode(char encodeFileName[]) {
    // declare local values
-   char fName[];
-   char lName[];
-   char parsedID[];
-   char fileName[];
+   char fName[51];
+   char lName[51];
+   char parsedID[51];
+   char fileName[51];
    bool late = false;
        
-   //start reading inputs
+   // read first set of inputs
    readInput(fName, lName, late);
+   // concatenate information from the first readInput
    strcat(encodeFileName, lName);
-   
+   strcat(encodeFileName, "_");
+   strcat(encodeFileName, fName);
+   strcat(encodeFileName, "_");
+   //check if assignment is late
    if (late) {
-       
-   }   
-   readInput(parsedID[], fileName);   
-
-
+   strcat(encodeFileName, "LATE");
+   strcat(encodeFileName, "_"); 
+   }  
+   
+   // read second set of inputs
+   readInput(parsedID, fileName);   
+   // concatenate parsedID
+   strcat(encodeFileName, parsedID);
+   strcat(encodeFileName, "_");
+   
+   // read time (in military)
+   
+   
+   // concatenate fileName
+   strcat(encodeFileName, fileName);
+ 
+// testing output
+   cout << encodeFileName << endl;
 
 }
 
@@ -97,11 +127,14 @@ char yesNo = ' ';
 //prompt user for their first and last name
 cout << "Enter your last name: ";
 cin.getline(lName, 51);
-cout << "Enter your first name: ";
+cout << endl << "Enter your first name: ";
 cin.getline(fName, 51);
 
+//make first and last name all lowercase
+makeLower(fName, lName);
+
 // was the assignment late?
-cout << "Was your assignment Late (y/n)?  "
+cout << endl << "Was your assignment Late (y/n)?  ";
 cin >> yesNo;
 while (yesNo !=  'y' && yesNo != 'n' && yesNo !=  'Y' && yesNo != 'N') {
 cout << "Invalid Answer! Please choose y/n!" << endl;
@@ -109,14 +142,39 @@ cout << ">> ";
 cin >> yesNo;
 }
 cin.ignore();
-    
+
+if (yesNo == 'y' || yesNo == 'Y') {
+ lateFlag = true;   
 }
 
 }
+
+// start makeLower
+void makeLower(char fName[], char lName[]) {
+// make all characters in first name array lowercase    
+for (int i = 0; i <= strlen(fName); i++) {
+fName[i] = tolower(fName[i]);
+}
+// make all characters in last name array lowercase 
+for (int i = 0; i <= strlen(lName); i++) {
+lName[i] = tolower(lName[i]);
+}
+}
+
 
 void readInput(char parsedID[], char fileName[]) {
+//declare local variable
+char stdID[51];
 
+//prompt user for student id
+cout << endl << "Enter your Student-ID (format: 222-22-2222): ";
+cin.getline(stdID, 51);
+// put the last four numbers of the id into parsedID
+strncpy(parsedID, stdID + 7, 4);
 
+//prompt user for file name
+cout << endl << "Enter the file name: ";
+cin.getline(fileName, 51);
 
 }
 
