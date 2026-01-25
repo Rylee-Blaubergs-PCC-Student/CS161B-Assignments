@@ -23,7 +23,8 @@ void encode(char encodeFileName[]);
 void readInput(char fName[], char lName[], bool &lateFlag);
 void readInput(char parsedID[], char fileName[]);
 void makeLower(char fName[], char lName[]);
-
+void readTime(char strTime[]);
+void clearArray(char encodeFileName[]);
 
 int main() {
 // declare inputs
@@ -40,8 +41,14 @@ while (choice == 'e' || choice == 'E') {
 cout << "This program will ask you a few questions and generate an encoded" << endl
      << "fileName based on your answers." << endl << endl;
 
+// start encoding
 encode(encodeFileName);
 
+//display encoded fileName
+cout << "Your encoded file name is: " << encodeFileName << endl;
+
+// clear encoded file name array
+clearArray(encodeFileName);
 
 //check if user wants to make another file name
 displayMenu();
@@ -87,6 +94,7 @@ void encode(char encodeFileName[]) {
    char lName[51];
    char parsedID[51];
    char fileName[51];
+   char strTime[51];
    bool late = false;
        
    // read first set of inputs
@@ -109,13 +117,14 @@ void encode(char encodeFileName[]) {
    strcat(encodeFileName, "_");
    
    // read time (in military)
+   readTime(strTime);
    
+   //concatenate time
+   strcat(encodeFileName, strTime);
+   strcat(encodeFileName, "_");
    
    // concatenate fileName
    strcat(encodeFileName, fileName);
- 
-// testing output
-   cout << encodeFileName << endl;
 
 }
 
@@ -178,6 +187,42 @@ cin.getline(fileName, 51);
 
 }
 
+void readTime(char strTime[]) {
+    // declare local variables
+    int hour = 0;
+    int min = 0;
+    char discard;
+    
+    // prompt user for time
+    cout << endl << "Enter the time submitted (military time - ex: 18:24 for 6:24pm):" << endl;
+    cin >> hour >> discard >> min;
+    // validate input
+    while(!cin || discard != ':' || hour < 0 || hour > 24 || min < 0 || min > 60)
+  {
+    cout << "Invalid input! Please try again!!" << endl;
+    cin.clear();
+    cin.ignore(100, '\n');
+    cin >> hour >> discard >> min;
+  }   
+  
+
+  
+  //when data is all good, come out and ignore the newline
+  cin.ignore(100,'\n');
+  
+  //convert hour from int to string then to cstring and copy to timeStr
+  strncpy(strTime, to_string(hour).c_str(),10);
+  //convert min from int to string and then cstring and concatenate to timeStr
+  strcat(strTime, to_string(min).c_str());
+  
+}
+
+void clearArray(char encodeFileName[]) {
+// make each character in the encoded file name a empty character
+for (int i = 0; i <= strlen(encodeFileName); i++) {
+encodeFileName[i] = ' ';
+}
+}
 
 
 
