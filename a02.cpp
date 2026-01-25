@@ -86,7 +86,8 @@ void readOption(char &option) {
 
 // validate whether user picked a valid choice or not 
 while (option !=  'q' && option != 'e' && option !=  'Q' && option != 'E') {
-cout << "Invalid Option! Please choose y/n!" << endl;
+cout << "Invalid Option! Please try again!" << endl;
+displayMenu();
 cout << ">> ";
 cin >> option;
 }
@@ -229,3 +230,6 @@ for (int i = 0; i <= strlen(encodeFileName); i++) {
 encodeFileName[i] = '\0';
 }
 }
+
+
+
