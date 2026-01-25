@@ -25,6 +25,7 @@ void readInput(char parsedID[], char fileName[]);
 void makeLower(char fName[], char lName[]);
 void readTime(char strTime[]);
 void clearArray(char encodeFileName[]);
+void goodbye();
 
 int main() {
 // declare inputs
@@ -45,7 +46,7 @@ cout << "This program will ask you a few questions and generate an encoded" << e
 encode(encodeFileName);
 
 //display encoded fileName
-cout << "Your encoded file name is: " << encodeFileName << endl;
+cout << endl << "Your encoded file name is: " << encodeFileName << endl << endl;
 
 // clear encoded file name array
 clearArray(encodeFileName);
@@ -55,13 +56,18 @@ displayMenu();
 readOption(choice);
 }
 
+goodbye();
 
 return 0;
 }
 
 // start welcome message
 void welcome() {
-    cout << "Welcome to my fileName encoding program!!" << endl;
+    cout << "Welcome to my fileName encoding program!!" << endl << endl;
+}
+
+void goodbye() {
+ cout << endl << "Thank you for using my fileName generator!" << endl;   
 }
 
 // start of display menu function
@@ -218,11 +224,8 @@ void readTime(char strTime[]) {
 }
 
 void clearArray(char encodeFileName[]) {
-// make each character in the encoded file name a empty character
+// make each character in the encoded file name to null
 for (int i = 0; i <= strlen(encodeFileName); i++) {
 encodeFileName[i] = '\0';
 }
 }
-
-
-
