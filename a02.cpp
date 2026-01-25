@@ -18,12 +18,16 @@ using namespace std;
 void welcome();
 void displayMenu();
 void readOption(char &option);
+void encode(char encodeFileName[]);
+void readInput(char fName[], char lName[], bool &lateFlag);
+void readInput(char parsedID[], char fileName[]);
 
 
 int main() {
 // declare inputs
 char choice = ' ';
 // declare outputs
+char encodeFileName[51];
 
 // place functions 
 welcome();
@@ -63,3 +67,59 @@ cin >> option;
 cin.ignore();
     
 }
+
+void encode(char encodeFileName[]) {
+   // declare local values
+   char fName[];
+   char lName[];
+   char parsedID[];
+   char fileName[];
+   bool late = false;
+       
+   //start reading inputs
+   readInput(fName, lName, late);
+   strcat(encodeFileName, lName);
+   
+   if (late) {
+       
+   }   
+   readInput(parsedID[], fileName);   
+
+
+
+}
+
+
+void readInput(char fName[], char lName[], bool &lateFlag) {
+// declare local value
+char yesNo = ' '; 
+
+//prompt user for their first and last name
+cout << "Enter your last name: ";
+cin.getline(lName, 51);
+cout << "Enter your first name: ";
+cin.getline(fName, 51);
+
+// was the assignment late?
+cout << "Was your assignment Late (y/n)?  "
+cin >> yesNo;
+while (yesNo !=  'y' && yesNo != 'n' && yesNo !=  'Y' && yesNo != 'N') {
+cout << "Invalid Answer! Please choose y/n!" << endl;
+cout << ">> ";
+cin >> yesNo;
+}
+cin.ignore();
+    
+}
+
+}
+
+void readInput(char parsedID[], char fileName[]) {
+
+
+
+}
+
+
+
+
