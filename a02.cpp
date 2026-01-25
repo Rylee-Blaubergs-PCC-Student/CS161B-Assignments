@@ -220,7 +220,7 @@ void readTime(char strTime[]) {
 void clearArray(char encodeFileName[]) {
 // make each character in the encoded file name a empty character
 for (int i = 0; i <= strlen(encodeFileName); i++) {
-encodeFileName[i] = ' ';
+encodeFileName[i] = '\0';
 }
 }
 
