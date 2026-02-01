@@ -18,6 +18,12 @@
 // count will have the number of values read.
 
 // Call calcGrade()function that takes the scores array and an empty grades array and fills the grades array with letter grades.
+// A is >3.3  <= 4.0
+// B is >2.7 <= 3.3
+// C is >1.9 <= 2.7
+// D is >1.1 <= 1.9
+// F is >0.0 <= 1.1
+
 // Call the printList function to print the lists.
 // Call the sort function to sort the list based on scores.
 // Call the printList function to print the lists.
@@ -26,13 +32,13 @@
 // Assume the arrays will always contain fewer than 20 values. You must not let the user enter more than 20 values.
 
 
-
 #include <iostream>
 #include <iomanip>
 
 // function prototypes
 void welcome();
 void goodbye();
+void readScores(int scores[], int count);
 
 
 int main() {
@@ -40,7 +46,7 @@ int main() {
 // declare all variables
 double scores[20];
 char grades[20];
-
+int count = 0;
 
 
 
