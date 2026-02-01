@@ -54,9 +54,9 @@ int totalEntries = 0;
 welcome();
 
 // fill array
-readScores(scores[], totalEntries);
+readScores(scores, totalEntries);
 
-printArray(scores[], totalEntries);
+printArray(scores, totalEntries);
 
 
 }
