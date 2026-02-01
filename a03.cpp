@@ -10,6 +10,23 @@
 //                   
 //                   
 //******************************************************************************
+// int main()
+// Declare all variables needed. The 2 arrays (double scores[], and char grades[]) must be declared in main().
+// Call readScores() and send scores and count to it. This will fill the scores array from the user. 
+// You should call the readDouble() function to read and validate the scores before adding them to the scores array.
+
+// count will have the number of values read.
+
+// Call calcGrade()function that takes the scores array and an empty grades array and fills the grades array with letter grades.
+// Call the printList function to print the lists.
+// Call the sort function to sort the list based on scores.
+// Call the printList function to print the lists.
+// Call the median function to find the median and print it in main().
+
+// Assume the arrays will always contain fewer than 20 values. You must not let the user enter more than 20 values.
+
+
+
 #include <iostream>
 #include <iomanip>
 
@@ -20,8 +37,9 @@ void goodbye();
 
 int main() {
 
-
-
+// declare all variables
+double scores[20];
+char grades[20];
 
 
 
