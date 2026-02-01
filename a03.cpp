@@ -40,6 +40,8 @@ void welcome();
 void goodbye();
 void readScores(int scores[], int &count);
 
+// declare const
+const int MAX_ENTRIES = 20;
 
 int main() {
 
@@ -68,9 +70,26 @@ void goodbye() {
 }
 
 void readScores(int scores[], int &count) {
+    int num = 0;
+    while (num != -1 && count < MAX_ENTRIES){
+        readDouble(">>", scores[count++]);
+    }
 
 
+}
 
+void readDouble(string prompt, double &num) {
+//Output prompt
+  cout << prompt;
+  cin >> num;
+  while(!cin && num < 0 && num > 4.0)
+  {  
+    cout << "Invalid input! Please try again!!" << endl;
+    cin.clear();
+    cin.ignore(100, '\n');
+    cin >> num;
+  }
+  cin.ignore(10, '\n');
 }
 
 void printArray(int arr[], int size) {
