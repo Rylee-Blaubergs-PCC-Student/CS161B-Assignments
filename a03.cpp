@@ -38,7 +38,7 @@
 // function prototypes
 void welcome();
 void goodbye();
-void readScores(int scores[], int count);
+void readScores(int scores[], int &count);
 
 
 int main() {
@@ -46,11 +46,15 @@ int main() {
 // declare all variables
 double scores[20];
 char grades[20];
-int count = 0;
+int totalEntries = 0;
 
+// start placing functions
+welcome();
 
+// fill array
+readScores(scores[], totalEntries);
 
-
+printArray(scores[], totalEntries);
 
 
 }
@@ -63,4 +67,15 @@ void goodbye() {
     cout << "Thank you for using my Parallel Arrays program!!" << endl;
 }
 
+void readScores(int scores[], int &count) {
+
+
+
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+      cout << arr[i] << ", ";
+    }
+}
 
