@@ -10,3 +10,33 @@
 //                   
 //                   
 //******************************************************************************
+#include <iostream>
+#include <iomanip>
+
+// function prototypes
+void welcome();
+void goodbye();
+
+
+int main() {
+
+
+
+
+
+
+
+
+
+
+}
+
+void welcome() {
+    cout << "Welcome to my Parallel Arrays program!" << endl;
+}
+
+void goodbye() {
+    cout << "Thank you for using my Parallel Arrays program!!" << endl;
+}
+
+
