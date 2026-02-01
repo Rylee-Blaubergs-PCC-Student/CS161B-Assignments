@@ -35,10 +35,15 @@
 #include <iostream>
 #include <iomanip>
 
+using namespace std;
+
 // function prototypes
 void welcome();
 void goodbye();
-void readScores(int scores[], int &count);
+void readScores(double scores[], int &count);
+void readDouble(string prompt, double &num);
+
+void printArray(double arr[], int size);
 
 // declare const
 const int MAX_ENTRIES = 20;
@@ -47,7 +52,7 @@ int main() {
 
 // declare all variables
 double scores[20];
-char grades[20];
+// char grades[20];
 int totalEntries = 0;
 
 // start placing functions
@@ -56,7 +61,7 @@ welcome();
 // fill array
 readScores(scores, totalEntries);
 
-printArray(scores, totalEntries);
+//printArray(scores, totalEntries);
 
 
 }
@@ -69,10 +74,11 @@ void goodbye() {
     cout << "Thank you for using my Parallel Arrays program!!" << endl;
 }
 
-void readScores(int scores[], int &count) {
-    int num = 0;
+void readScores(double scores[], int &count) {
+    double num = 0;
     while (num != -1 && count < MAX_ENTRIES){
-        readDouble(">>", scores[count++]);
+     readDouble(">>", num);
+     scores[count++] = num;
     }
 
 
