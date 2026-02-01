@@ -42,6 +42,7 @@ void welcome();
 void goodbye();
 void readScores(double scores[], int &count);
 void readDouble(string prompt, double &num);
+bool validNum(string prompt, double &tempNum);
 
 void printArray(double arr[], int size);
 
@@ -54,6 +55,7 @@ int main() {
 double scores[20];
 // char grades[20];
 int totalEntries = 0;
+
 
 // start placing functions
 welcome();
@@ -79,11 +81,12 @@ void goodbye() {
 
 void readScores(double scores[], int &count) {
     double num = 0;
+    string prompt = ">>";
     while (num != -1 && count < MAX_ENTRIES){
      // read a double
-     readDouble(">>", num);
+     readDouble(prompt, num);
      // validate the number
-     validNum(">>", num);
+     validNum(prompt, num);
      // add the number to array
      scores[count] = num;
      // increment count
@@ -109,11 +112,12 @@ void readDouble(string prompt, double &num) {
   cin.ignore(10, '\n');
 }
 
-bool validNum(char prompt[], int &tempNum) {
+bool validNum(string prompt, double &tempNum) {
  while (tempNum < 0 || tempNum > 4.0) {
      cout << "Invalid input! Please try again!!" << endl;
-     
+     readDouble(prompt, tempNum);
  }
+ return true;
 }
 
 void printArray(double arr[], int size) {
