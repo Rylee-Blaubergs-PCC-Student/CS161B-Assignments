@@ -68,7 +68,14 @@ sort(scores, grades, totalEntries);
 // print sorted array
 cout << "The list sorted by scores in ascending order:" << endl;
 printArray(scores, grades, totalEntries);
+cout << endl;
 
+// change setprecision two print up to the second decimal place
+cout << fixed << setprecision(2);
+median(scores, totalEntries);
+
+
+//cout << "The median score is: " << median(scores, totalEntries) << endl << endl;
 
 // print goodbye message
 goodbye();
@@ -196,9 +203,51 @@ void sort(double scores[], char grade[], int count) {
 }
 
 double median(double scores[], int count) {
-
-
+// declare local variables
+double m = 0.0;
+// first and secondVal are only used to simplify the even math
+double firstVal = 0.0;
+double secondVal = 0.0;
+int firstIndex = 0;
+int secondIndex = 0;
     
+    // check if scores size is even or not
+    if (count % 2 == 0) {
+        // find middle two indexes and set numbers
+        firstIndex = (count / 2) - 1;
+        secondIndex = firstIndex + 1;
+        firstVal = scores[firstIndex];
+        secondVal = scores[secondIndex];
+        
+        // debugging text
+        cout << "firstVal is: " << firstVal << endl;
+        cout << "secondVal is: " << secondVal << endl;
+        
+        // calculate median
+        m = (firstVal + secondVal) / 2;
+        
+        // debugging text
+        cout << "median is: " << m << endl;
+        
+        
+        
+        return m;
+    } else {
+        // find middle index    
+        firstIndex = count / 2;
+        
+        // debugging text
+        cout << "firstVal is: " << firstVal << endl;
+        
+        // set m
+        m = scores[firstIndex];
+        
+        // debugging text
+        cout << "median is: " << m << endl;
+          
+        return m;
+    }
+
 }
 
 void printArray(double scores[], char grades[], int size) {
