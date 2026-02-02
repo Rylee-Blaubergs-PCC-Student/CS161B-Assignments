@@ -72,10 +72,8 @@ cout << endl;
 
 // change setprecision two print up to the second decimal place
 cout << fixed << setprecision(2);
-median(scores, totalEntries);
 
-
-//cout << "The median score is: " << median(scores, totalEntries) << endl << endl;
+cout << "The median score is: " << median(scores, totalEntries) << endl << endl;
 
 // print goodbye message
 goodbye();
@@ -219,32 +217,17 @@ int secondIndex = 0;
         firstVal = scores[firstIndex];
         secondVal = scores[secondIndex];
         
-        // debugging text
-        cout << "firstVal is: " << firstVal << endl;
-        cout << "secondVal is: " << secondVal << endl;
-        
         // calculate median
         m = (firstVal + secondVal) / 2;
-        
-        // debugging text
-        cout << "median is: " << m << endl;
-        
-        
         
         return m;
     } else {
         // find middle index    
         firstIndex = count / 2;
         
-        // debugging text
-        cout << "firstVal is: " << firstVal << endl;
-        
         // set m
         m = scores[firstIndex];
         
-        // debugging text
-        cout << "median is: " << m << endl;
-          
         return m;
     }
 
