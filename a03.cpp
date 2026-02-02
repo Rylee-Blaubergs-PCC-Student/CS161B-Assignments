@@ -2,31 +2,16 @@
 // Author:           Rylee Blaubergs
 // Assignment:       Assignment 3
 // Date:             2/1/26
-// Description:      
-// Input:            
+// Description:      Parallel arrays program. will get user input for grades and
+//                   scores and print them unsorted and sorted
+// Input:            num as a double
 //                   
-// Output:           
+// Output:           unsorted and sorted scores and grades
 // Sources:          Assignment instructions, Sample Code, Previous assignments
 //                   
 //                   
 //******************************************************************************
-// int main()
-// Declare all variables needed. The 2 arrays (double scores[], and char grades[]) must be declared in main().
-// Call readScores() and send scores and count to it. This will fill the scores array from the user. 
-// You should call the readDouble() function to read and validate the scores before adding them to the scores array.
 
-// count will have the number of values read.
-
-// Call calcGrade()function that takes the scores array and an empty grades array and fills the grades array with letter grades.
-// A is >3.3  <= 4.0
-// B is >2.7 <= 3.3
-// C is >1.9 <= 2.7
-// D is >1.1 <= 1.9
-// F is >0.0 <= 1.1
-
-// Call the printList function to print the lists.
-// Call the sort function to sort the list based on scores.
-// Call the printList function to print the lists.
 // Call the median function to find the median and print it in main().
 
 // Assume the arrays will always contain fewer than 20 values. You must not let the user enter more than 20 values.
@@ -44,6 +29,7 @@ void readScores(double scores[], int &count);
 void readDouble(string prompt, double &num);
 bool validNum(string prompt, double &tempNum);
 void calcGrade(double scores[], char grade[], int count);
+void sort(double scores[], char grade[], int count);
 
 void printArray(double scores[], char grades[], int size);
 
@@ -69,11 +55,23 @@ calcGrade(scores, grades, totalEntries);
 // print unsorted array
 cout << "Your stats are as below:" << endl << endl;
 cout << "The list of scores and their grades are:" << endl;
+
 // set fixed decimal placement to one ex: 2.1, 4.0, 3.5, etc...
 cout << fixed << setprecision(1);
 printArray(scores, grades, totalEntries);
+// formatting
+cout << endl;
+
+// sort array
+sort(scores, grades, totalEntries);
+
+// print sorted array
+cout << "The list sorted by scores in ascending order:" << endl;
+printArray(scores, grades, totalEntries);
 
 
+// print goodbye message
+goodbye();
 return 0;
 }
 
@@ -141,7 +139,6 @@ bool validNum(string prompt, double &tempNum) {
  return true;
 }
 
-
 void calcGrade(double scores[], char grade[], int count) {
  for (int i = 0; i < count; i++) {
     if (scores[i] > 3.3 && scores[i] <= 4.0) {
@@ -156,6 +153,39 @@ void calcGrade(double scores[], char grade[], int count) {
     grade[i] = 'F';
    }
   }
+}
+
+
+void sort(double scores[], char grade[], int count) {
+ // declare local variables
+ double min = 0.0;
+ char tempChar = ' ';
+ 
+ // start sorting
+ for (int i = 0; i < count; i++) {
+    // set min to the first index of the array
+    min = scores[i];
+    // save grade as well
+    tempChar = grade[i];
+    
+    // start nested for loop
+    for (int j = i + 1; j < count; j++) {
+        // check for a new smallest element
+        if (scores[j] < min) {
+           // set new smallest element and save grade letter
+           min = scores[j];   
+           tempChar = grade[j];
+        }
+    }
+    // check if a swap is needed
+    if (min != scores[i]) {
+        // swap scores and grade letter
+        scores[i] = min;
+        grade[i] = tempChar;
+    }
+    
+ }
+    
 }
 
 void printArray(double scores[], char grades[], int size) {
