@@ -30,7 +30,7 @@ void readDouble(string prompt, double &num);
 bool validNum(string prompt, double &tempNum);
 void calcGrade(double scores[], char grade[], int count);
 void sort(double scores[], char grade[], int count);
-
+double median(double scores[], int count);
 void printArray(double scores[], char grades[], int size);
 
 // declare const
@@ -160,7 +160,9 @@ void sort(double scores[], char grade[], int count) {
  // declare local variables
  double min = 0.0;
  double tempVar = 0.0;
- char tempChar = ' ';
+ char newChar = ' ';
+ char oldChar = ' ';
+ int swapIndex = 0;
  
  // start sorting
  for (int i = 0; i < count; i++) {
@@ -168,38 +170,34 @@ void sort(double scores[], char grade[], int count) {
     tempVar = scores[i];
     min = scores[i];
     // save grade as well
-    tempChar = grade[i];
-    
-    // debugging text
-    cout << "scores[i]: " << scores[i] << endl;
-    cout << "Min BEFORE nested loop: " << min << endl;
-    cout << "tempChar BEFORE nested loop: " << tempChar << endl;
-    cout << "tempVar BEFORE nested loop: " << tempVar << endl;
+    oldChar = grade[i];
     
     // start nested for loop
     for (int j = i + 1; j < count; j++) {
         // check for a new smallest element
         if (scores[j] < min) {
-           // set new smallest element and save grade letter
+           // set new smallest element, save grade letter, and save swapIndex
            min = scores[j];   
-           tempChar = grade[j];
+           newChar = grade[j];
+           swapIndex = j;
         }
     }
-    
-    // debugging text
-    cout << "scores[i]: " << scores[i] << endl;
-    cout << "Min AFTER nested loop: " << min << endl;
-    cout << "tempChar AFTER nested loop: " << tempChar << endl;
-    cout << "tempVar AFTER nested loop: " << tempVar << endl;
     
     // check if a swap is needed
     if (min != scores[i]) {
         // swap scores and grade letter
         scores[i] = min;
-        grade[i] = tempChar;
-    }
-    
- }
+        scores[swapIndex] = tempVar; 
+        grade[i] = newChar;
+        grade[swapIndex] = oldChar;
+        
+    }  
+ }   
+}
+
+double median(double scores[], int count) {
+
+
     
 }
 
