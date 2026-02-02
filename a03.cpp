@@ -63,8 +63,14 @@ welcome();
 
 // fill array
 readScores(scores, totalEntries);
+// calculate grades
 calcGrade(scores, grades, totalEntries);
 
+// print unsorted array
+cout << "Your stats are as below:" << endl << endl;
+cout << "The list of scores and their grades are:" << endl;
+// set fixed decimal placement to one ex: 2.1, 4.0, 3.5, etc...
+cout << fixed << setprecision(1);
 printArray(scores, grades, totalEntries);
 
 
@@ -154,7 +160,7 @@ void calcGrade(double scores[], char grade[], int count) {
 
 void printArray(double scores[], char grades[], int size) {
     for (int i = 0; i < size; i++) {
-      cout << scores[i] << ", " << grades[i] << endl;
+        cout << scores[i] << " " << grades[i] << endl;
     }
 }
 
