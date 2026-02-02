@@ -89,7 +89,7 @@ void goodbye() {
 
 void readScores(double scores[], int &count) {
     double num = 0;
-    string prompt = ">>";
+    string prompt = ">> ";
     while (num != -1 && count < MAX_ENTRIES){
      // read a double
      readDouble(prompt, num);
@@ -159,14 +159,22 @@ void calcGrade(double scores[], char grade[], int count) {
 void sort(double scores[], char grade[], int count) {
  // declare local variables
  double min = 0.0;
+ double tempVar = 0.0;
  char tempChar = ' ';
  
  // start sorting
  for (int i = 0; i < count; i++) {
-    // set min to the first index of the array
+    // set min to the first index of the array and save it with tempVar
+    tempVar = scores[i];
     min = scores[i];
     // save grade as well
     tempChar = grade[i];
+    
+    // debugging text
+    cout << "scores[i]: " << scores[i] << endl;
+    cout << "Min BEFORE nested loop: " << min << endl;
+    cout << "tempChar BEFORE nested loop: " << tempChar << endl;
+    cout << "tempVar BEFORE nested loop: " << tempVar << endl;
     
     // start nested for loop
     for (int j = i + 1; j < count; j++) {
@@ -177,6 +185,13 @@ void sort(double scores[], char grade[], int count) {
            tempChar = grade[j];
         }
     }
+    
+    // debugging text
+    cout << "scores[i]: " << scores[i] << endl;
+    cout << "Min AFTER nested loop: " << min << endl;
+    cout << "tempChar AFTER nested loop: " << tempChar << endl;
+    cout << "tempVar AFTER nested loop: " << tempVar << endl;
+    
     // check if a swap is needed
     if (min != scores[i]) {
         // swap scores and grade letter
