@@ -43,8 +43,9 @@ void goodbye();
 void readScores(double scores[], int &count);
 void readDouble(string prompt, double &num);
 bool validNum(string prompt, double &tempNum);
+void calcGrade(double scores[], char grade[], int count);
 
-void printArray(double arr[], int size);
+void printArray(double scores[], char grades[], int size);
 
 // declare const
 const int MAX_ENTRIES = 20;
@@ -53,7 +54,7 @@ int main() {
 
 // declare all variables
 double scores[20];
-// char grades[20];
+char grades[20];
 int totalEntries = 0;
 
 
@@ -62,8 +63,9 @@ welcome();
 
 // fill array
 readScores(scores, totalEntries);
+calcGrade(scores, grades, totalEntries);
 
-printArray(scores, totalEntries);
+printArray(scores, grades, totalEntries);
 
 
 return 0;
@@ -133,9 +135,26 @@ bool validNum(string prompt, double &tempNum) {
  return true;
 }
 
-void printArray(double arr[], int size) {
+
+void calcGrade(double scores[], char grade[], int count) {
+ for (int i = 0; i < count; i++) {
+    if (scores[i] > 3.3 && scores[i] <= 4.0) {
+     grade[i] = 'A';   
+    } else if (scores[i] > 2.7 && scores[i] <= 3.3) {
+    grade[i] = 'B';
+   } else if (scores[i] > 1.9 && scores[i] <= 2.7) {
+    grade[i] = 'C';
+   } else if (scores[i] > 1.1 && scores[i] <= 1.9) {
+    grade[i] = 'D';
+   } else if (scores[i] > 0.0 && scores[i] <= 1.1) {
+    grade[i] = 'F';
+   }
+  }
+}
+
+void printArray(double scores[], char grades[], int size) {
     for (int i = 0; i < size; i++) {
-      cout << arr[i] << endl;
+      cout << scores[i] << ", " << grades[i] << endl;
     }
 }
 
