@@ -69,6 +69,8 @@ printArray(scores, totalEntries);
 return 0;
 }
 
+
+
 void welcome() {
     cout << "Welcome to my Parallel Arrays program!" << endl;
     cout << "Please enter the list of scores (-1 to end input:)" << endl;
@@ -87,10 +89,16 @@ void readScores(double scores[], int &count) {
      readDouble(prompt, num);
      // validate the number
      validNum(prompt, num);
+     
+     // check if num should be put into the array
+     if (num != -1) { 
+     
      // add the number to array
      scores[count] = num;
+     
      // increment count
      count++;
+     }
     }
 
 
@@ -113,6 +121,11 @@ void readDouble(string prompt, double &num) {
 }
 
 bool validNum(string prompt, double &tempNum) {
+    //check if num is -1
+    if (tempNum == -1) {
+     return true;   
+    }
+    // validate in range
  while (tempNum < 0 || tempNum > 4.0) {
      cout << "Invalid input! Please try again!!" << endl;
      readDouble(prompt, tempNum);
@@ -122,7 +135,7 @@ bool validNum(string prompt, double &tempNum) {
 
 void printArray(double arr[], int size) {
     for (int i = 0; i < size; i++) {
-      cout << arr[i] << ", ";
+      cout << arr[i] << endl;
     }
 }
 
