@@ -24,22 +24,27 @@ int main() {
     readOption(option);
     
     while (option == '+' || option == '-' || option == 'p') {
-     // check if we should run enqueue, dequeue, or to quit
-     if (option == '+') {
-         cout << "+ was entered" << endl;
-         cout << "Integer: ";
-         readInt(val);
-         
-         // check for overflow error
-         if (enqueue(queue, size, val) == 1) {
-             cout << "Error: Queue Overflow!" << endl;
-             printQueue(queue, size);
-        // must be true other wise
-         } else {
-            printQueue(queue, size);
-         }
-     } 
+     if (option != '+' && option != '-' && option != 'p' && option != 'q') {
+         // this happens nothing above have been entered
+        cout << "Invalid Option." << endl << endl;
+        readOption(option);
      
+     } else {
+        // check if we should run enqueue, dequeue, or to quit
+        if (option == '+') {
+             cout << "+ was entered" << endl;
+             cout << "Integer: ";
+             readInt(val);
+         
+             // check for overflow error
+            if (enqueue(queue, size, val) == 1) {
+                 cout << "Error: Queue Overflow!" << endl;
+                 printQueue(queue, size);
+            // must be true other wise
+             } else {
+               printQueue(queue, size);
+             }
+     } 
      
      if (option == '-') {
          cout << "- was entered" << endl;
@@ -56,7 +61,7 @@ int main() {
          goodbye();
          return 0;
      }
-     
+     }
      
      // this happens nothing above have been entered
      cout << "Invalid Option." << endl << endl;
