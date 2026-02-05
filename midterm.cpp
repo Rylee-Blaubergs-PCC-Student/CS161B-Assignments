@@ -3,7 +3,7 @@
 using namespace std;
 
 int enqueue(int queue[], int &size, int val);
-int dequeue(int queue[], int &size, int &val);
+int dequeue(int queue[], int &size, int val);
 void printQueue(int queue[], int size);
 
 const int MAX = 3; // maximum size of queue
